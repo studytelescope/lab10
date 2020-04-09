@@ -25,14 +25,13 @@ $ ${PACKAGE_MANAGER} install vagrant
 ```
 
 ```sh
-
 $ vagrant version
 $ vagrant init hashicorp/bionic64
 $ less Vagrantfile
 $ vagrant init -f -m hashicorp/bionic64
 ```
 
-```
+```sh
 $ mkdir shared
 ```
 
@@ -49,7 +48,6 @@ sudo chown -R developer /home/developer
 SCRIPT
 EOF
 ```
-
 
 ```sh
 $ cat >> Vagrantfile <<EOF
@@ -76,6 +74,7 @@ $ cat >> Vagrantfile <<EOF
   config.vm.provision "shell", inline: \$script, privileged: true
 
   config.ssh.extra_args = "-tt"
+
 end
 EOF
 ```
