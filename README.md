@@ -21,7 +21,6 @@ $ export PACKAGE_MANAGER=<пакетный_менеджер>
 
 ```sh
 $ cd ${GITHUB_USERNAME}/workspace
-$ pushd .
 $ ${PACKAGE_MANAGER} install vagrant
 ```
 
