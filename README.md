@@ -53,6 +53,7 @@ EOF
 
 ```sh
 $ cat >> Vagrantfile <<EOF
+
 Vagrant.configure("2") do |config|
 
   config.vagrant.plugins = ["vagrant-vbguest", "vagrant-disksize"]
@@ -72,7 +73,7 @@ $ cat >> Vagrantfile <<EOF
     vb.memory = "2048"
   end
 
-  config.vm.provision "shell", inline: $script, privileged: true
+  config.vm.provision "shell", inline: \$script, privileged: true
 
   config.ssh.extra_args = "-tt"
 end
@@ -93,9 +94,6 @@ $ vagrant snapshot push
 $ vagrant snapshot list
 $ vagrant halt
 $ vagrant snapshot pop
-
-vagrant cloud auth login --token ${VAGRANT_TOKEN}
-vagrant cloud search hashicorp --limit 5
 ```
 
 ```ruby
