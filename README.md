@@ -1,6 +1,8 @@
 ## Laboratory work X
 
-[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/tp-labs/lab10/master/preview.png)](https://yandex.ru/efir/?stream_id=vxoj6Gf6H9Lg)
+<a href="https://yandex.ru/efir/?stream_id=vxoj6Gf6H9Lg"><img src="https://raw.githubusercontent.com/tp-labs/lab10/master/preview.png" width="640"/></a>
+
+https://yandex.ru/efir/?stream_id=vYrKRcFKi46o
 
 Данная лабораторная работа посвещена изучению процесса создания и конфигурирования виртуальной среды разработки с использованием **Vagrant**
 
