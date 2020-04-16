@@ -28,9 +28,9 @@ $ ${PACKAGE_MANAGER} install vagrant
 
 ```sh
 $ vagrant version
-$ vagrant init hashicorp/bionic64
+$ vagrant init bento/ubuntu-19.10
 $ less Vagrantfile
-$ vagrant init -f -m hashicorp/bionic64
+$ vagrant init -f -m bento/ubuntu-19.10
 ```
 
 ```sh
@@ -56,16 +56,15 @@ $ cat >> Vagrantfile <<EOF
 
 Vagrant.configure("2") do |config|
 
-  config.vagrant.plugins = ["vagrant-vbguest", "vagrant-disksize"]
+  config.vagrant.plugins = ["vagrant-vbguest"]
 EOF
 ```
 
 ```sh
 $ cat >> Vagrantfile <<EOF
 
-  config.vm.box = "bento/ubuntu-19.04"
+  config.vm.box = "bento/ubuntu-19.10"
   config.vm.network "public_network"
-  config.disksize.size = "20GB"
   config.vm.synced_folder('shared', '/vagrant', type: 'rsync')
 
   config.vm.provider "virtualbox" do |vb|
