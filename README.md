@@ -15,30 +15,32 @@ $ open https://www.vagrantup.com/intro/index.html
 ## Tutorial
 
 ```sh
+# Set up environment variables
 $ export GITHUB_USERNAME=<имя_пользователя>
 $ export PACKAGE_MANAGER=<пакетный_менеджер>
 ```
 
 ```sh
+# Install vargrant
 $ cd ${GITHUB_USERNAME}/workspace
 $ ${PACKAGE_MANAGER} install vagrant
 ```
 
 ```sh
-$ vagrant version
+$ vagrant version # check version
 Installed Version: 2.2.7
 Latest Version: 2.2.7
  
 You're running an up-to-date version of Vagrant!'
 
-$ vagrant init bento/ubuntu-19.10
+$ vagrant init bento/ubuntu-19.10 #initialize vagrantfile
 A `Vagrantfile` has been placed in this directory. You are now
 ready to `vagrant up` your first virtual environment! Please read
 the comments in the Vagrantfile as well as documentation on
 `vagrantup.com` for more information on using Vagrant.
 
-$ less Vagrantfile
-$ vagrant init -f -m bento/ubuntu-19.10
+$ less Vagrantfile # show
+$ vagrant init -f -m bento/ubuntu-19.10 #initialize vagrantfile
 A `Vagrantfile` has been placed in this directory. You are now
 ready to `vagrant up` your first virtual environment! Please read
 the comments in the Vagrantfile as well as documentation on
@@ -50,7 +52,7 @@ $ mkdir shared
 ```
 
 ```sh
-$ cat > Vagrantfile <<EOF
+$ cat > Vagrantfile <<EOF # install docker and root rights
 \$script = <<-SCRIPT
 sudo apt install docker.io -y
 sudo docker pull fastide/ubuntu:19.04
@@ -65,7 +67,7 @@ EOF
 ```
 
 ```sh
-$ cat >> Vagrantfile <<EOF
+$ cat >> Vagrantfile <<EOF # configure plagins
 
 Vagrant.configure("2") do |config|
 
@@ -74,7 +76,7 @@ EOF
 ```
 
 ```sh
-$ cat >> Vagrantfile <<EOF
+$ cat >> Vagrantfile <<EOF # configure disk size, use VB as a provider and configure it using ssh
 
   config.vm.box = "bento/ubuntu-19.10"
   config.vm.network "public_network"
@@ -94,7 +96,7 @@ EOF
 ```
 
 ```sh
-$ vagrant validate
+$ vagrant validate # check correctness
 Vagrantfile validated successfully.
 
 $ vagrant status
@@ -108,14 +110,14 @@ default provider will be shown. So if a provider is not listed,
 then the machine is not created for that environment.
 
 $ vagrant up # --provider virtualbox
-$ vagrant port
+$ vagrant port # check ports
 The forwarded ports for the machine are listed below. Please note that
 these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
 
     22 (guest) => 2222 (host)
 
-$ vagrant status
+$ vagrant status # status
 Current machine states:
 
 default                   running (virtualbox)
@@ -159,7 +161,7 @@ $ vagrant snapshot list
     default: can list them using this command, and use commands such as
     default: `vagrant snapshot restore` to go back to a certain snapshot.
 
-$ vagrant snapshot push
+$ vagrant snapshot push # make a current state
 ==> default: Snapshotting the machine as 'push_1587618352_9965'...
 ==> default: Snapshot saved! You can restore the snapshot at any time by
 ==> default: using `vagrant snapshot restore`. You can delete it using
@@ -169,10 +171,10 @@ $ vagrant snapshot list
 ==> default: 
 push_1587618352_9965
 
-$ vagrant halt
+$ vagrant halt # stop machine
 ==> default: Attempting graceful shutdown of VM...
 
-$ vagrant snapshot pop
+$ vagrant snapshot pop # launch the last snapshot
 ==> default: Restoring the snapshot 'push_1587618352_9965'...
 ==> default: Deleting the snapshot 'push_1587618352_9965'...
 ==> default: Snapshot deleted!
@@ -188,8 +190,9 @@ $ vagrant snapshot pop
 ==> default: flag to force provisioning. Provisioners marked to run always will still run.
 ```
 
-```ruby
-  config.vm.provider :vmware_esxi do |esxi|
+```ruby 
+# configure user properties
+  config.vm.provider :vmware_esxi do |esxi| 
 
     esxi.esxi_hostname = '<exsi_hostname>'
     esxi.esxi_username = 'root'
@@ -207,6 +210,7 @@ $ vagrant snapshot pop
 ```
 
 ```sh
+# get plagin
 $ vagrant plugin install vagrant-vmware-esxi
 Installing the 'vagrant-vmware-esxi' plugin. This can take a few minutes...
 Fetching: iniparse-1.5.0.gem (100%)
