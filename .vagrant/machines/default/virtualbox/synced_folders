@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/home/johnsnow/thedraftaccount/workspace/shared","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
