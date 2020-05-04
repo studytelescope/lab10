@@ -14,17 +14,23 @@ $ open https://www.vagrantup.com/intro/index.html
 
 ## Tutorial
 
+Set up global variables
+
 ```sh
 # Set up environment variables
-$ export GITHUB_USERNAME=<имя_пользователя>
-$ export PACKAGE_MANAGER=<пакетный_менеджер>
+$ export GITHUB_USERNAME=thedraftaccount
+$ export PACKAGE_MANAGER=apt-get
 ```
+
+Set up workspace directory
 
 ```sh
 # Install vargrant
-$ cd ${GITHUB_USERNAME}/workspace
-$ ${PACKAGE_MANAGER} install vagrant
+$ cd ${GITHUB_USERNAME}/workspace # get into workspace
+$ ${PACKAGE_MANAGER} install vagrant #install vagrant
 ```
+
+Install and update vagrant utility
 
 ```sh
 $ vagrant version # check version
@@ -48,8 +54,10 @@ the comments in the Vagrantfile as well as documentation on
 ```
 
 ```sh
-$ mkdir shared
+$ mkdir shared #make dir for shared data
 ```
+
+Update Vagrantfile by executables instructions
 
 ```sh
 $ cat > Vagrantfile <<EOF # install docker and root rights
@@ -66,6 +74,8 @@ SCRIPT
 EOF
 ```
 
+Configure plagins
+
 ```sh
 $ cat >> Vagrantfile <<EOF # configure plagins
 
@@ -74,6 +84,8 @@ Vagrant.configure("2") do |config|
   config.vagrant.plugins = ["vagrant-vbguest"]
 EOF
 ```
+
+Configure disk size, use VB as a provider and configure it, ssh
 
 ```sh
 $ cat >> Vagrantfile <<EOF # configure disk size, use VB as a provider and configure it using ssh
@@ -94,6 +106,8 @@ $ cat >> Vagrantfile <<EOF # configure disk size, use VB as a provider and confi
 end
 EOF
 ```
+
+Check vagrant efficiency and launch it
 
 ```sh
 $ vagrant validate # check correctness
@@ -190,6 +204,8 @@ $ vagrant snapshot pop # launch the last snapshot
 ==> default: flag to force provisioning. Provisioners marked to run always will still run.
 ```
 
+Configure user info via esxi
+
 ```ruby 
 # configure user properties
   config.vm.provider :vmware_esxi do |esxi| 
@@ -208,6 +224,8 @@ $ vagrant snapshot pop # launch the last snapshot
     esxi.guest_disk_type = 'thin'
   end
 ```
+
+Install vmware as plugin
 
 ```sh
 # get plagin
